@@ -6,17 +6,18 @@ const googleTTS = require('google-tts-api');
 require('dotenv').config()
 
 const prefix = "_speak";
+const prefix = "!speak";
 // if (client.channels.id === "739587032791121941") {
 
 // }
 client.on("message", async (msg) => {
     // console.error(msg)
-    if (msg.content.startsWith(prefix + "help")) {
+    if (msg.content.startsWith(prefix + "help") || msg.content.startsWith(prefix1 + "help")) {
         msg.reply("La lista delle lingue e i relativi codici sono \nITALIANO : it \nINGLESE : en\nBANGLA : bn\nPer la lista completa visitare https://cloud.google.com/text-to-speech/docs/voices"
 
         )
     }
-    if (msg.content.startsWith(prefix)) {
+    if (msg.content.startsWith(prefix) || msg.content.startsWith(prefix1)) {
         if (msg.member.voice.channel) {
             const playable = await msg.member.voice.channel.join();
             googleTTS(`${msg.content.slice(msg.content.indexOf(" "))}`, `${msg.content.slice(6, msg.content.indexOf(" "))}`, 1) // speed normal = 1 (default), slow = 0.24
