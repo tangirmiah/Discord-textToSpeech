@@ -6,7 +6,7 @@ const googleTTS = require('google-tts-api');
 require('dotenv').config()
 
 const prefix = "_speak";
-const prefix = "!speak";
+const prefix1 = "!speak";
 // if (client.channels.id === "739587032791121941") {
 
 // }
