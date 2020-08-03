@@ -5,37 +5,19 @@ const googleTTS = require('google-tts-api');
 
 require('dotenv').config()
 
-
+const prefix = "_speak";
 // if (client.channels.id === "739587032791121941") {
 
 // }
 client.on("message", async (msg) => {
     // console.error(msg)
-    if (msg.content.slice(0, 9) === "!speakit ") {
+    if (msg.content.startsWith(prefix)) {
         if (msg.member.voice.channel) {
             const playable = await msg.member.voice.channel.join();
-            googleTTS(`${msg.content.slice(9)}`, 'it', 1) // speed normal = 1 (default), slow = 0.24
+            googleTTS(`${msg.content.slice(msg.content.indexOf(" "))}`, `${msg.content.slice(6, msg.content.indexOf(" "))}`, 1) // speed normal = 1 (default), slow = 0.24
                 .then(function (url) {
                     // console.log(url); // https://translate.google.com/translate_tts?...
                     const dispatcher = playable.play(url)
-                })
-                .catch(function (err) {
-                    console.error(err.stack);
-                });
-        } else {
-            message.reply('You need to join a voice channel first!');
-        }
-    }
-    if (msg.content.slice(0, 9) === "!speaken ") {
-        if (msg.member.voice.channel) {
-            const playable = await msg.member.voice.channel.join();
-            googleTTS(`${msg.content.slice(9)}`, 'en', 1) // speed normal = 1 (default), slow = 0.24
-                .then(function (url) {
-                    // console.log(url); // https://translate.google.com/translate_tts?...
-                    const dispatcher = playable.play(url)
-
-
-
                 })
                 .catch(function (err) {
                     console.error(err.stack);
