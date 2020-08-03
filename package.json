@@ -1,0 +1,30 @@
+{
+  "name": "discord-speech-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tangirmiah/discord-speech-bot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tangirmiah/discord-speech-bot/issues"
+  },
+  "homepage": "https://github.com/tangirmiah/discord-speech-bot#readme",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "@google-cloud/text-to-speech": "^3.1.0",
+    "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
+    "ffmpeg-static": "^4.2.6",
+    "google-tts-api": "0.0.4",
+    "nodemon": "^2.0.4"
+  }
+}
