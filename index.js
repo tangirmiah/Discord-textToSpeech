@@ -11,6 +11,11 @@ const prefix = "_speak";
 // }
 client.on("message", async (msg) => {
     // console.error(msg)
+    if (msg.content.startsWith(prefix + "help")) {
+        msg.reply("La lista delle lingue e i relativi codici sono \nITALIANO : it \nINGLESE : en\nBANGLA : bn\nPer la lista completa visitare https://cloud.google.com/text-to-speech/docs/voices"
+
+        )
+    }
     if (msg.content.startsWith(prefix)) {
         if (msg.member.voice.channel) {
             const playable = await msg.member.voice.channel.join();
@@ -18,6 +23,12 @@ client.on("message", async (msg) => {
                 .then(function (url) {
                     // console.log(url); // https://translate.google.com/translate_tts?...
                     const dispatcher = playable.play(url)
+                    dispatcher.on("finish", () => {
+                        console.log("ended")
+                        setTimeout(() => {
+                            playable.disconnect()
+                        }, 60000)
+                    })
                 })
                 .catch(function (err) {
                     console.error(err.stack);
