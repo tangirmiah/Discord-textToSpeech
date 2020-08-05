@@ -21,12 +21,6 @@ client.on("message", async (msg) => {
                 .then(function (url) {
                     // console.log(url); // https://translate.google.com/translate_tts?...
                     const dispatcher = playable.play(url)
-                    dispatcher.on("finish", () => {
-                        console.log("ended")
-                        setTimeout(() => {
-                            playable.disconnect()
-                        }, 60000)
-                    })
                 })
                 .catch(function (err) {
                     console.error(err.stack);
