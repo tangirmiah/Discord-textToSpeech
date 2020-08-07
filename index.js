@@ -23,7 +23,7 @@ client.on("message", async (msg) => {
                 .then(function (url) {
                     // console.log(url); // https://translate.google.com/translate_tts?...
                     const dispatcher = playable.play(url)
-                    msg.reply(url)
+                    msg.reply(url);
                 })
                 .catch(function (err) {
                     console.error(err.stack);
