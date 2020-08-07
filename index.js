@@ -17,13 +17,10 @@ client.on("message", async (msg) => {
     } else if (msg.content.startsWith(prefix) || msg.content.startsWith(prefix1)) {
         if (msg.member.voice.channel) {
             const playable = await msg.member.voice.channel.join();
-            msg.reply(msg.content.slice(msg.content.indexOf(" ")));
-            msg.reply(msg.content.slice(6, msg.content.indexOf(" ")));
             googleTTS(`${msg.content.slice(msg.content.indexOf(" "))}`, `${msg.content.slice(6, msg.content.indexOf(" "))}`, 1) // speed normal = 1 (default), slow = 0.24
                 .then(function (url) {
                     // console.log(url); // https://translate.google.com/translate_tts?...
-                    const dispatcher = playable.play(url)
-                    msg.reply(url);
+                    const dispatcher = playable.play(url);
                 })
                 .catch(function (err) {
                     console.error(err.stack);
