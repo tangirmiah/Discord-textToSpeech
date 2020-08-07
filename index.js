@@ -13,7 +13,7 @@ const prefix1 = "!speak";
 client.on("message", async (msg) => {
     // console.error(msg)
     if (msg.content.startsWith(prefix + "help") || msg.content.startsWith(prefix1 + "help")) {
-        msg.reply("La lista delle lingue e i relativi codici sono \nITALIANO : it \nINGLESE : en\nBANGLA : bn\nPer la lista completa visitare https://cloud.google.com/text-to-speech/docs/voices")
+        msg.reply("Command:\n\t_speak[lang] <message>\n\t!speak[lang] <message>\nExample:\n\t_speakit ciao\n\t!speaken hello\nLa lista delle lingue e i relativi codici sono \nITALIANO : it \nINGLESE : en\nBANGLA : bn\nPer la lista completa visitare https://cloud.google.com/text-to-speech/docs/voices")
     } else if (msg.content.startsWith(prefix) || msg.content.startsWith(prefix1)) {
         if (msg.member.voice.channel) {
             const playable = await msg.member.voice.channel.join();
